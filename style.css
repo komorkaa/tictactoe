@@ -1,6 +1,9 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
+    background-image: url('background.jpg'); /* A kép útvonala */
+    background-size: cover; /* A kép mérete töltse ki a teljes háttérteret */
+    background-repeat: no-repeat; /* A kép ne ismétlődjön meg */
 }
 
 #board {
