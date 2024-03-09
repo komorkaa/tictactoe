@@ -1,9 +1,10 @@
 #board {
     display: grid;
-    grid-template-columns: repeat(3, 30vw); /* A cellák szélessége a viewport szélesség 30%-a */
-    grid-template-rows: repeat(3, 30vw); /* A cellák magassága a viewport szélesség 30%-a */
+    grid-template-columns: repeat(3, 50vw); /* A cellák szélessége a viewport szélesség 30%-a */
+    grid-template-rows: repeat(3, 50vw); /* A cellák magassága a viewport szélesség 30%-a */
     gap: 2px;
-    margin-top: 20px;
+    margin: 20px auto; /* Margin beállítása a középre igazításhoz */
+    width: fit-content; /* Az elem szélességét a tartalmának megfelelőre állítja */
 }
 
 body {
@@ -12,14 +13,6 @@ body {
     background-image: url('background.jpg'); /* A kép útvonala */
     background-size: cover; /* A kép mérete töltse ki a teljes háttérteret */
     background-repeat: no-repeat; /* A kép ne ismétlődjön meg */
-}
-
-#board {
-    display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
-    gap: 2px;
-    margin-top: 20px;
 }
 
 .cell {
