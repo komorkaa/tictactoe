@@ -20,7 +20,11 @@ document.addEventListener("DOMContentLoaded", function() {
             const cell = document.createElement("div");
             cell.classList.add("cell");
             cell.dataset.index = index;
-            cell.textContent = value;
+            const img = document.createElement("img");
+            img.src = "https://images.genius.com/0782c5b81992f1935013ae0ba61f8515.1000x1000x1.jpg";
+            img.alt = "";
+            img.classList.add("player-icon");
+            cell.appendChild(img);
             cell.addEventListener("click", handleCellClick);
             board.appendChild(cell);
         });
@@ -31,7 +35,12 @@ document.addEventListener("DOMContentLoaded", function() {
         const index = clickedCell.dataset.index;
         if (cells[index] === "" && !gameEnded) {
             cells[index] = currentPlayer;
-            clickedCell.textContent = currentPlayer;
+            clickedCell.innerHTML = "";
+            const img = document.createElement("img");
+            img.src = currentPlayer === "X" ? "https://images.genius.com/0782c5b81992f1935013ae0ba61f8515.1000x1000x1.jpg" : "https://ocdn.eu/images/pulscms/OGQ7MDA_/ed526a9db4576b6660ab856f1a2ab5cd.jpeg";
+            img.alt = currentPlayer;
+            img.classList.add("player-icon");
+            clickedCell.appendChild(img);
             if (checkWin()) {
                 resultMessage.textContent = "Gratulálok, nyereményed egy Fonogram díj!!!";
                 gameEnded = true;
@@ -55,7 +64,12 @@ document.addEventListener("DOMContentLoaded", function() {
         const robotIndex = emptyCells[randomIndex];
         cells[robotIndex] = "O";
         const robotCell = board.querySelector(`[data-index='${robotIndex}']`);
-        robotCell.textContent = "O";
+        robotCell.innerHTML = "";
+        const img = document.createElement("img");
+        img.src = "https://ocdn.eu/images/pulscms/OGQ7MDA_/ed526a9db4576b6660ab856f1a2ab5cd.jpeg";
+        img.alt = "O";
+        img.classList.add("player-icon");
+        robotCell.appendChild(img);
         if (checkWin()) {
             resultMessage.textContent = "A robot nyert!";
             gameEnded = true;
