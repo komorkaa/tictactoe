@@ -14,21 +14,22 @@ document.addEventListener("DOMContentLoaded", function() {
         renderBoard();
     });
 
-    function renderBoard() {
-        board.innerHTML = "";
-        cells.forEach((value, index) => {
-            const cell = document.createElement("div");
-            cell.classList.add("cell");
-            cell.dataset.index = index;
-            const img = document.createElement("img");
-            img.src = "https://images.genius.com/0782c5b81992f1935013ae0ba61f8515.1000x1000x1.jpg";
-            img.alt = "";
-            img.classList.add("player-icon");
-            cell.appendChild(img);
-            cell.addEventListener("click", handleCellClick);
-            board.appendChild(cell);
-        });
-    }
+function renderBoard() {
+    board.innerHTML = "";
+    cells.forEach((value, index) => {
+        const cell = document.createElement("div");
+        cell.classList.add("cell");
+        cell.dataset.index = index;
+        const img = document.createElement("img");
+        img.src = ""; // Az induláskor az img src-je üres legyen
+        img.alt = "";
+        img.classList.add("player-icon");
+        cell.appendChild(img);
+        cell.addEventListener("click", handleCellClick);
+        board.appendChild(cell);
+    });
+}
+
 
     function handleCellClick(event) {
         const clickedCell = event.target;
