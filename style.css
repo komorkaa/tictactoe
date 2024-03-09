@@ -1,3 +1,11 @@
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, 30vw); /* A cellák szélessége a viewport szélesség 30%-a */
+    grid-template-rows: repeat(3, 30vw); /* A cellák magassága a viewport szélesség 30%-a */
+    gap: 2px;
+    margin-top: 20px;
+}
+
 body {
     font-family: Arial, sans-serif;
     text-align: center;
