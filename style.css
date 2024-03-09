@@ -1,10 +1,9 @@
 #board {
     display: grid;
-    grid-template-columns: repeat(3, 50vw); /* A cellák szélessége a viewport szélesség 30%-a */
-    grid-template-rows: repeat(3, 50vw); /* A cellák magassága a viewport szélesség 30%-a */
+    grid-template-columns: repeat(3, 30vw); /* A cellák szélessége a viewport szélesség 30%-a */
+    grid-template-rows: repeat(3, 30vw); /* A cellák magassága a viewport szélesség 30%-a */
     gap: 2px;
-    margin: 20px auto; /* Margin beállítása a középre igazításhoz */
-    width: fit-content; /* Az elem szélességét a tartalmának megfelelőre állítja */
+    margin-top: 20px;
 }
 
 body {
