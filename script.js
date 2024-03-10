@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const startButton = document.getElementById("start-button");
     const board = document.getElementById("board");
     const resultMessage = document.getElementById("result-message");
+    const restartButton = document.createElement("button"); // Új gomb létrehozása
+    restartButton.textContent = "Újraindítás"; // Gomb szövegének beállítása
+    restartButton.style.display = "none"; // Kezdetben rejtve van
 
     let currentPlayer = "X";
     let cells = Array.from({ length: 9 }).fill("");
@@ -40,6 +43,10 @@ document.addEventListener("DOMContentLoaded", function() {
             if (checkWin()) {
                 resultMessage.textContent = "Gratulálok, nyereményed egy Fonogram díj!!!";
                 gameEnded = true;
+            } else if (cells.every(cell => cell !== "")) { // Ellenőrizze, hogy az összes cella tele van-e
+                resultMessage.textContent = "Ez most komoly?";
+                restartButton.style.display = "block"; // Újraindítás gomb megjelenítése
+                gameEnded = true;
             } else {
                 currentPlayer = currentPlayer === "X" ? "O" : "X";
                 if (currentPlayer === "O") {
@@ -63,7 +70,12 @@ document.addEventListener("DOMContentLoaded", function() {
         const img = robotCell.querySelector(".player-icon");
         img.src = "https://ocdn.eu/images/pulscms/OGQ7MDA_/ed526a9db4576b6660ab856f1a2ab5cd.jpeg";
         if (checkWin()) {
-            resultMessage.textContent = "A robot nyert!";
+            resultMessage.textContent = "Fogadjunk, hogy arra mentél, hogy Majka kapja a Fonogramot";
+            restartButton.style.display = "block"; // Újraindítás gomb megjelenítése
+            gameEnded = true;
+        } else if (cells.every(cell => cell !== "")) { // Ellenőrizze, hogy az összes cella tele van-e
+            resultMessage.textContent = "Ez most komoly?";
+            restartButton.style.display = "block"; // Újraindítás gomb megjelenítése
             gameEnded = true;
         } else {
             currentPlayer = "X";
@@ -86,4 +98,16 @@ document.addEventListener("DOMContentLoaded", function() {
             return cells[a] && cells[a] === cells[b] && cells[a] === cells[c];
         });
     }
+
+    // Újraindítás funkció hozzáadása
+    restartButton.addEventListener("click", function() {
+        cells = Array.from({ length: 9 }).fill("");
+        gameEnded = false;
+        resultMessage.textContent = "";
+        restartButton.style.display = "none"; // Újraindítás gomb elrejtése
+        renderBoard();
+    });
+
+    // Újraindítás gomb hozzáadása a dokumentumhoz
+    document.body.appendChild(restartButton);
 });
